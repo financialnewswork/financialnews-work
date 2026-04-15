@@ -1,0 +1,23 @@
+---
+layout: null
+---
+# Financial News Wire — Full Article Index
+
+> Financial news, straight from the source.
+
+This file contains all articles published by Financial News Wire for consumption by LLMs and AI agents.
+
+{% assign sorted_news = site.news | sort: 'date' | reverse %}{% for article in sorted_news %}
+---
+
+## {{ article.title }}
+
+- **Date**: {{ article.date | date: '%Y-%m-%d' }}
+- **Company**: {{ article.company }}
+- **Tags**: {{ article.tags | join: ', ' }}
+- **URL**: {{ article.url | absolute_url }}
+- **Source**: {{ article.source_url }}
+
+{{ article.content | strip_html | strip_newlines | truncatewords: 200 }}
+
+{% endfor %}

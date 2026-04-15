@@ -1,0 +1,33 @@
+---
+layout: null
+---
+# Financial News Wire
+
+> Financial news, straight from the source.
+
+Financial News Wire provides contextual financial news coverage sourced from company press releases. Our goal is not to replicate press releases, but to understand and provide context regarding what financial companies are investing in — the technologies, partnerships, markets, and strategies shaping the industry.
+
+## Website
+- Homepage: https://financialnews.work
+- News: https://financialnews.work/news/
+- About: https://financialnews.work/about/
+- RSS Feed: https://financialnews.work/feed.xml
+- JSON API: https://financialnews.work/api/news.json
+- Sitemap: https://financialnews.work/sitemap.xml
+
+## Companies Covered
+{% assign companies = site.news | map: 'company' | uniq | sort %}{% for company in companies %}- {{ company }}
+{% endfor %}
+## Content Summary
+- Total articles: {{ site.news | size }}
+- Coverage period: {{ site.news | sort: 'date' | first | map: 'date' | date: '%Y-%m-%d' }} to {{ site.news | sort: 'date' | last | map: 'date' | date: '%Y-%m-%d' }}
+- Topics: Banking, Insurance, Payments, Asset Management, Fintech, AI, Digital Assets, Sustainability
+
+## How to Access Our Content
+- **RSS Feed**: Subscribe at https://financialnews.work/feed.xml for the latest 50 articles
+- **JSON API**: Machine-readable article index at https://financialnews.work/api/news.json
+- **Individual Articles**: Each article URL follows the pattern /news/YYYY-MM-DD-slug/
+- **Structured Data**: Every article includes JSON-LD NewsArticle schema markup
+
+## Licensing
+Content is sourced from public company press releases. Each article links to its original source.

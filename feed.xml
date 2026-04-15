@@ -1,0 +1,29 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% assign sorted_news = site.news | sort: 'date' | reverse %}
+    {% for article in sorted_news limit:50 %}
+    <item>
+      <title>{{ article.title | xml_escape }}</title>
+      <link>{{ article.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ article.url | absolute_url }}</guid>
+      <pubDate>{{ article.date | date_to_rfc822 }}</pubDate>
+      <dc:creator>Financial News Wire</dc:creator>
+      <description>{{ article.content | strip_html | truncatewords: 80 | xml_escape }}</description>
+      {% for tag in article.tags limit:5 %}
+      <category>{{ tag | xml_escape }}</category>
+      {% endfor %}
+      <category>{{ article.company | xml_escape }}</category>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

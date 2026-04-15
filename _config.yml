@@ -18,6 +18,9 @@ defaults:
 plugins:
   - jekyll-seo-tag
 
+include:
+  - .well-known
+
 exclude:
   - README.md
   - Gemfile

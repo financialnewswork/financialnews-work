@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}",
+  "description": {{ site.description | jsonify }},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Financial News Wire",
+    "url": "{{ site.url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/logo.png"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.url }}/news/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
