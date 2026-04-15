@@ -1,0 +1,28 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" height="40" class="me-2">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/' | relative_url }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/news/' | relative_url }}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/about/' | relative_url }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/submit/' | relative_url }}">Submit News</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

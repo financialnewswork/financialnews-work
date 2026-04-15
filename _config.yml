@@ -1,0 +1,28 @@
+title: Financial News Wire
+description: "Financial news, straight from the source."
+url: "https://financialnews.work"
+baseurl: ""
+
+collections:
+  news:
+    output: true
+    permalink: /news/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "article"
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .env
+  - logo.png
+  - favicon.png
+  - hero.png

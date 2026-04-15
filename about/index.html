@@ -1,0 +1,43 @@
+---
+layout: default
+title: About
+---
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="section-title">About Financial News Wire</h1>
+
+      <div class="about-section">
+        <h3 class="text-navy">Our Mission</h3>
+        <p>Financial News Wire delivers clear, concise financial news sourced directly from company press releases. We believe that important financial developments should be accessible to everyone — not buried in corporate communications or hidden behind jargon.</p>
+
+        <h3 class="text-navy mt-4">What We Do</h3>
+        <p>We monitor press releases from the world's leading financial companies and transform them into straightforward news articles. Every story on Financial News Wire traces back to an official company announcement, ensuring accuracy and transparency.</p>
+        <p>Our coverage spans banking, insurance, payments, asset management, and fintech — from quarterly earnings reports and product launches to leadership changes and industry research.</p>
+
+        <h3 class="text-navy mt-4">Companies We Cover</h3>
+        <div class="row g-3 mt-2 mb-4">
+          {% assign companies = site.news | map: 'company' | uniq | sort %}
+          {% for company in companies %}
+          <div class="col-6 col-md-4">
+            <div class="p-3 bg-light rounded text-center">
+              <span class="fw-semibold text-navy">{{ company }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h3 class="text-navy mt-4">Our Approach</h3>
+        <ul>
+          <li><strong>Source-first:</strong> Every article links back to its original press release.</li>
+          <li><strong>Clear language:</strong> We cut through corporate jargon to deliver the facts.</li>
+          <li><strong>Timely coverage:</strong> News published as companies announce it.</li>
+          <li><strong>No opinion, just facts:</strong> We report what companies say, not what we think.</li>
+        </ul>
+
+        <h3 class="text-navy mt-4">Submit News</h3>
+        <p>Are you a financial company with news to share? We welcome press release submissions from financial institutions. <a href="{{ '/submit/' | relative_url }}" class="text-gold">Submit your news</a> for consideration.</p>
+      </div>
+    </div>
+  </div>
+</section>

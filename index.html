@@ -1,0 +1,53 @@
+---
+layout: default
+title: Home
+---
+<section class="hero text-center">
+  <div class="container">
+    <h1>Financial News Wire</h1>
+    <p class="lead mt-3 mb-4">Financial news, straight from the source.</p>
+    <p class="text-white-50">We transform press releases from the world's leading financial companies<br>into clear, concise news you can use.</p>
+    <a href="{{ '/news/' | relative_url }}" class="btn btn-gold btn-lg mt-3">Read Latest News</a>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="section-title">Latest News</h2>
+  <div class="row g-4">
+    {% assign sorted_news = site.news | sort: 'date' | reverse %}
+    {% for article in sorted_news limit:12 %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card news-card">
+        <div class="card-body d-flex flex-column">
+          <div class="mb-2">
+            <span class="badge bg-gold text-dark small">{{ article.company }}</span>
+            <span class="text-muted small ms-2">{{ article.date | date: "%b %d, %Y" }}</span>
+          </div>
+          <h3 class="card-title"><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3>
+          <p class="card-text mt-2">{{ article.content | strip_html | truncatewords: 30 }}</p>
+          <a href="{{ article.url | relative_url }}" class="mt-auto text-decoration-none text-gold fw-semibold small">Read More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="text-center mt-5">
+    <a href="{{ '/news/' | relative_url }}" class="btn btn-outline-navy btn-lg">View All News</a>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="section-title">Companies We Cover</h2>
+    <div class="row g-3">
+      {% assign companies = site.news | map: 'company' | uniq | sort %}
+      {% for company in companies %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 bg-white rounded text-center">
+          <span class="fw-semibold text-navy">{{ company }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
