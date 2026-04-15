@@ -6,18 +6,123 @@ title: Submit News
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <h1 class="section-title">Submit News</h1>
-      <p class="lead text-muted">Have a financial press release you'd like us to cover?</p>
+      <p class="lead text-muted">Submit a financial press release for coverage on Financial News Context.</p>
 
-      <div class="bg-light p-5 rounded mt-4">
-        <h3 class="text-navy mb-3">Submission Guidelines</h3>
-        <p>Financial News Context covers press releases from financial services companies including banking, insurance, payments, asset management, and fintech.</p>
-        <ul class="mb-4">
+      <div class="mt-4 mb-5">
+        <h3 class="text-navy mb-3">How It Works</h3>
+        <div class="row g-4">
+          <div class="col-md-4 text-center">
+            <div class="bg-light rounded p-4 h-100">
+              <div class="display-6 text-gold mb-2">1</div>
+              <h5 class="text-navy">Submit</h5>
+              <p class="small text-muted mb-0">Submit your story below with a title and press release URL or full text.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="bg-light rounded p-4 h-100">
+              <div class="display-6 text-gold mb-2">2</div>
+              <h5 class="text-navy">Pay</h5>
+              <p class="small text-muted mb-0">Complete the $10 submission fee via Stripe to confirm your submission.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="bg-light rounded p-4 h-100">
+              <div class="display-6 text-gold mb-2">3</div>
+              <h5 class="text-navy">Published</h5>
+              <p class="small text-muted mb-0">We review, write, and publish your story on Financial News Context.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+          <h3 class="text-navy mb-3">Submit Your Story</h3>
+          <p class="text-muted mb-4">Choose how you'd like to submit your press release.</p>
+
+          <ul class="nav nav-pills mb-4" id="submitTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active btn-outline-navy" id="url-tab" data-bs-toggle="pill" data-bs-target="#url-panel" type="button" role="tab">Submit URL</button>
+            </li>
+            <li class="nav-item ms-2" role="presentation">
+              <button class="nav-link btn-outline-navy" id="text-tab" data-bs-toggle="pill" data-bs-target="#text-panel" type="button" role="tab">Submit Full Text</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="submitTabContent">
+            <div class="tab-pane fade show active" id="url-panel" role="tabpanel">
+              <form id="urlForm">
+                <div class="mb-3">
+                  <label for="urlTitle" class="form-label fw-semibold">Story Title</label>
+                  <input type="text" class="form-control" id="urlTitle" placeholder="e.g. Visa Launches New AI-Powered Payment Platform" required>
+                </div>
+                <div class="mb-3">
+                  <label for="urlLink" class="form-label fw-semibold">Press Release URL</label>
+                  <input type="url" class="form-control" id="urlLink" placeholder="https://company.com/press-releases/..." required>
+                </div>
+                <button type="submit" class="btn btn-gold">Submit Story</button>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="text-panel" role="tabpanel">
+              <form id="textForm">
+                <div class="mb-3">
+                  <label for="textTitle" class="form-label fw-semibold">Story Title</label>
+                  <input type="text" class="form-control" id="textTitle" placeholder="e.g. Bank of America Reports Q1 2026 Results" required>
+                </div>
+                <div class="mb-3">
+                  <label for="textBody" class="form-label fw-semibold">Press Release Text</label>
+                  <textarea class="form-control" id="textBody" rows="8" placeholder="Paste the full press release text here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold">Submit Story</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h3 class="text-navy mb-3">Complete Payment</h3>
+          <p class="text-muted">After submitting your story, complete the $10 submission fee to confirm.</p>
+          <a href="https://buy.stripe.com/plink_0TMclDOkUpeq8GdpVEqe3aXd" target="_blank" class="btn btn-gold btn-lg" id="payBtn">
+            Pay $10.00 via Stripe
+          </a>
+          <p class="small text-muted mt-3 mb-0">Secure payment processed by Stripe. Your story will be reviewed and published after payment confirmation.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 p-4 bg-light rounded">
+        <h5 class="text-navy">Submission Guidelines</h5>
+        <ul class="mb-0">
           <li>Submissions must be official company press releases</li>
-          <li>Include a link to the original press release on your company website</li>
+          <li>Include a link to the original press release when possible</li>
           <li>All submissions are reviewed before publication</li>
+          <li>The $10 fee covers editorial review and publication</li>
         </ul>
-        <p class="text-muted"><em>The submission process is coming soon. Check back for updates on how to submit your financial press releases for coverage.</em></p>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var issueBase = 'https://github.com/financialnewswork/financialnews-work/issues/new?labels=new';
+
+  document.getElementById('urlForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var title = document.getElementById('urlTitle').value.trim();
+    var url = document.getElementById('urlLink').value.trim();
+    var body = 'Press Release URL: ' + url;
+    var issueUrl = issueBase + '&title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    window.open(issueUrl, '_blank');
+  });
+
+  document.getElementById('textForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var title = document.getElementById('textTitle').value.trim();
+    var body = document.getElementById('textBody').value.trim();
+    var issueUrl = issueBase + '&title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    window.open(issueUrl, '_blank');
+  });
+})();
+</script>
