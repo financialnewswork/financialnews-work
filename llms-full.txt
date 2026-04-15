@@ -1,11 +1,11 @@
 ---
 layout: null
 ---
-# Financial News Wire — Full Article Index
+# Financial News Context — Full Article Index
 
 > Financial news, straight from the source.
 
-This file contains all articles published by Financial News Wire for consumption by LLMs and AI agents.
+This file contains all articles published by Financial News Context for consumption by LLMs and AI agents.
 
 {% assign sorted_news = site.news | sort: 'date' | reverse %}{% for article in sorted_news %}
 ---

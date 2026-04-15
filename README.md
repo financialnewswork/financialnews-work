@@ -1,2 +1,2 @@
 # financialnews-work
-Financial News Wire - Financial news, straight from the source.
+Financial News Context - Financial news, straight from the source.

@@ -3,10 +3,10 @@ layout: null
 ---
 {
   "schema_version": "v1",
-  "name_for_human": "Financial News Wire",
-  "name_for_model": "financial_news_wire",
+  "name_for_human": "Financial News Context",
+  "name_for_model": "financial_news_context",
   "description_for_human": "Financial news coverage sourced from company press releases, providing context on what financial companies are investing in.",
-  "description_for_model": "Financial News Wire provides news articles covering major financial companies including Bank of America, Visa, Fidelity, HSBC, JP Morgan Chase, MetLife, Allianz, Vanguard, PayPal, Stripe, Standard Chartered, Northwestern Mutual, and Zurich Insurance. Articles are sourced from official press releases and cover topics like earnings, AI adoption, digital assets, payments, insurance, and sustainability. Access structured article data at /api/news.json, RSS at /feed.xml, and full content for LLMs at /llms-full.txt.",
+  "description_for_model": "Financial News Context provides news articles covering major financial companies including Bank of America, Visa, Fidelity, HSBC, JP Morgan Chase, MetLife, Allianz, Vanguard, PayPal, Stripe, Standard Chartered, Northwestern Mutual, and Zurich Insurance. Articles are sourced from official press releases and cover topics like earnings, AI adoption, digital assets, payments, insurance, and sustainability. Access structured article data at /api/news.json, RSS at /feed.xml, and full content for LLMs at /llms-full.txt.",
   "auth": {
     "type": "none"
   },

@@ -1,11 +1,11 @@
 ---
 layout: null
 ---
-# Financial News Wire
+# Financial News Context
 
 > Financial news, straight from the source.
 
-Financial News Wire provides contextual financial news coverage sourced from company press releases. Our goal is not to replicate press releases, but to understand and provide context regarding what financial companies are investing in — the technologies, partnerships, markets, and strategies shaping the industry.
+Financial News Context provides contextual financial news coverage sourced from company press releases. Our goal is not to replicate press releases, but to understand and provide context regarding what financial companies are investing in — the technologies, partnerships, markets, and strategies shaping the industry.
 
 ## Website
 - Homepage: https://financialnews.work
