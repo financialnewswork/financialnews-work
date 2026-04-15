@@ -6,10 +6,47 @@ title: News
   <h1 class="section-title">News</h1>
   <p class="text-muted mb-4">The latest financial news from press releases by leading companies.</p>
 
-  <div class="row g-4">
+  <div class="row mb-4">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search articles...">
+    </div>
+    <div class="col-md-3 mb-3 mb-md-0">
+      <select id="companyFilter" class="form-select">
+        <option value="">All Companies</option>
+        {% assign companies = site.news | map: 'company' | uniq | sort %}
+        {% for company in companies %}
+        <option value="{{ company }}">{{ company }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="dateFilter" class="form-select">
+        <option value="">All Dates</option>
+        {% assign months = site.news | sort: 'date' | reverse | map: 'date' %}
+        {% assign unique_months = "" | split: "" %}
+        {% for d in months %}
+          {% assign ym = d | date: "%Y-%m" %}
+          {% unless unique_months contains ym %}
+            {% assign unique_months = unique_months | push: ym %}
+          {% endunless %}
+        {% endfor %}
+        {% for ym in unique_months %}
+        <option value="{{ ym }}">{{ ym | append: "-01" | date: "%B %Y" }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <p id="resultCount" class="text-muted small mb-3"></p>
+
+  <div class="row g-4" id="newsGrid">
     {% assign sorted_news = site.news | sort: 'date' | reverse %}
     {% for article in sorted_news %}
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4 news-item"
+         data-company="{{ article.company }}"
+         data-date="{{ article.date | date: '%Y-%m' }}"
+         data-title="{{ article.title | downcase }}"
+         data-text="{{ article.content | strip_html | truncatewords: 50 | downcase }}">
       <div class="card news-card">
         <div class="card-body d-flex flex-column">
           <div class="mb-2">
@@ -24,4 +61,41 @@ title: News
     </div>
     {% endfor %}
   </div>
+
+  <p id="noResults" class="text-center text-muted py-5 d-none">No articles match your search.</p>
 </section>
+
+<script>
+(function() {
+  const search = document.getElementById('searchInput');
+  const companyFilter = document.getElementById('companyFilter');
+  const dateFilter = document.getElementById('dateFilter');
+  const items = document.querySelectorAll('.news-item');
+  const resultCount = document.getElementById('resultCount');
+  const noResults = document.getElementById('noResults');
+
+  function filter() {
+    const q = search.value.toLowerCase().trim();
+    const company = companyFilter.value;
+    const date = dateFilter.value;
+    let visible = 0;
+
+    items.forEach(function(item) {
+      const matchCompany = !company || item.dataset.company === company;
+      const matchDate = !date || item.dataset.date === date;
+      const matchSearch = !q || item.dataset.title.includes(q) || item.dataset.text.includes(q);
+      const show = matchCompany && matchDate && matchSearch;
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    resultCount.textContent = visible + ' of ' + items.length + ' articles';
+    noResults.classList.toggle('d-none', visible > 0);
+  }
+
+  search.addEventListener('input', filter);
+  companyFilter.addEventListener('change', filter);
+  dateFilter.addEventListener('change', filter);
+  filter();
+})();
+</script>
