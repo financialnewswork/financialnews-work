@@ -17,7 +17,6 @@ body {
 }
 
 .navbar-brand img {
-  filter: brightness(0) invert(1);
 }
 
 .navbar-dark .nav-link {
